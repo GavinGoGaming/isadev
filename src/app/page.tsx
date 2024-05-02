@@ -5,7 +5,7 @@ import { cn } from "@/utils/cn";
 import Image from "next/image";
 import { StickyScroll } from "./scroll";
 
-export const LampContainer = ({
+const LampContainer = ({
   children,
   className,
 }: {
