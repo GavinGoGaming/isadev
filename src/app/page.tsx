@@ -147,7 +147,7 @@ export default function Home() {
           duration: 0.8,
           ease: "easeInOut",
         }}
-        className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
+        className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl drop-shadow-2xl"
       >
         Gavin Fox <br/><span className="text-2xl">Software Engineer @ klash.dev</span>
       </motion.h1>
