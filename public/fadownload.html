@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script src="https://site-assets.fontawesome.com/releases/v6.5.0/js/all.js"></script>
+
+  <h1>FontAwesome Downloader</h1>
+<input placeholder="fa-solid fa-something"/>
+<input value="#f54272" placeholder="#ffffff"/>
+<button onclick="
+if(document.querySelector('.thesvg')) {
+document.querySelector('.thesvg').remove();
+}
+var el = document.createElement('i');
+el.className = document.querySelector('.input').value + ' thesvg';
+el.style.color = document.querySelector('.col').value;
+document.body.append(el);
+">update svg</button>
+
+<button onclick="
+var nl = document.createElement('br');
+var x = document.createElement('a');
+x.href = 'data:image/svg;base64,' + btoa(document.querySelector('.thesvg').outerHTML);
+x.download = 'download.svg';
+x.textContent = 'download ' + document.querySelector('.thesvg').className.baseVal.substring(15).replace(' thesvg','');
+document.body.append(nl);
+document.body.append(x);
+">dl</button><br/>
+<i class="fa-solid fa-books thesvg" style="color: #f54272;"></i>
+
+</body>
+</html>
