@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS Audio Example</title>
+    <style>
+        /* CSS */
+        html, body {
+        background: #111;
+        color: white;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        font-family: Inter, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        button {
+        border: 1px solid black;
+        background-color: rgb(51, 65, 213);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 6px;
+        font-family: Inter;
+        transition: 0.15s ease;
+        }
+        button:not(disabled):hover {
+        background-color: rgb(73, 88, 255);
+        }
+        button:disabled {
+        background-color: rgb(22, 33, 155) !important;
+        color: #a5a5a5;
+        }
+        
+        .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        }
+        
+        .circle {
+        border: 1px solid #666;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        }
+        .red {
+        background: rgb(255, 35, 35);
+        }
+        .gray {
+        background: #444;
+        }
+    </style>
+</head>
+<body>
+    <h1>CS Audio Recorder Example</h1>
+    <div class="row">
+        <div class="circle gray"></div>
+        <button>Record Audio</button>
+    </div>
+    <script>
+function doMediaRecord(started, stopped) {
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+console.log("getUserMedia supported.");
+navigator.mediaDevices
+.getUserMedia(
+{
+audio: true,
+},
+)
+.then((stream) => {
+const mediaRecorder = new MediaRecorder(stream);
+mediaRecorder.start();
+started();
+let chunks = [];
+
+mediaRecorder.ondataavailable = (e) => {
+chunks.push(e.data);
+};
+
+setTimeout(() => {
+mediaRecorder.stop();
+stopped(chunks);
+}, 1000);
+})
+} else {
+console.log("getUserMedia not supported on your browser!");
+}
+}
+
+function urlFromChunks(chunks) {
+const b = new Blob(chunks, { type: "audio/ogg; codecs=opus" });
+const audioURL = window.URL.createObjectURL(b);
+return audioURL;
+}
+
+
+const btn = document.querySelector('button');
+const circle = document.querySelector('.circle');
+
+function switchCircle(color) {
+circle.className = `circle ${color}`;
+}
+btn.onclick = () => {
+doMediaRecord(() => {
+btn.disabled = true;
+switchCircle('red');
+}, (chunks) => {
+switchCircle('gray');
+btn.disabled = false;
+const url = urlFromChunks(chunks);
+document.body.insertAdjacentHTML("beforeend", `<div class="row">
+    ${url.split('/')[3]}
+    <audio src=${url} />
+</div>`);
+});
+}
+    </script>
+</body>
+</html>
