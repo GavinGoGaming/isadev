@@ -1,0 +1,324 @@
+<html><head><base href=".">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joy UI Components Demo</title>
+<script src="https://unpkg.com/@mui/joy@5.0.0-beta.15/umd/joy-ui.development.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter/600.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter/700.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #f7f7f7;
+  padding: 2rem;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.component-group {
+  margin-bottom: 2rem;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  color: #1976d2;
+  margin-bottom: 1rem;
+}
+
+.code-container {
+  margin-top: 2rem;
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.code-block {
+  margin: 1rem 0;
+}
+
+/* Joy UI Components Styles */
+.joy-button {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.joy-button:hover {
+  background-color: #1565c0;
+  transform: translateY(-1px);
+}
+
+.joy-button.outlined {
+  background-color: transparent;
+  border: 2px solid #1976d2;
+  color: #1976d2;
+}
+
+.joy-button.plain {
+  background-color: transparent;
+  color: #1976d2;
+  padding: 8px 16px;
+}
+
+.joy-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.joy-input:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+}
+
+.input-with-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-with-button .joy-input {
+  padding-right: 100px;
+}
+
+.input-with-button .joy-button {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.joy-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.joy-select:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+}
+
+.joy-checkbox-group {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.joy-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.joy-checkbox:checked {
+  background-color: #1976d2;
+  border-color: #1976d2;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="component-group">
+      <h2>Buttons</h2>
+      <div class="button-group">
+        <button class="joy-button">Filled</button>
+        <button class="joy-button outlined">Outlined</button>
+        <button class="joy-button plain">Plain</button>
+      </div>
+    </div>
+
+    <div class="component-group">
+      <h2>Input</h2>
+      <input type="text" class="joy-input" placeholder="Regular input...">
+    </div>
+
+    <div class="component-group">
+      <h2>Input with Button</h2>
+      <div class="input-with-button">
+        <input type="text" class="joy-input" placeholder="Type something...">
+        <button class="joy-button">Send</button>
+      </div>
+    </div>
+
+    <div class="component-group">
+      <h2>Select</h2>
+      <select class="joy-select">
+        <option value="" disabled="" selected="">Choose an option</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </select>
+    </div>
+
+    <div class="component-group">
+      <h2>Checkbox</h2>
+      <div class="joy-checkbox-group">
+        <input type="checkbox" class="joy-checkbox" id="checkbox1">
+        <label for="checkbox1">Check me</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="container code-container">
+    <h2>Implementation Code</h2>
+    
+    <h3>CSS</h3>
+    <pre><code class="language-css">.joy-button {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.joy-button:hover {
+  background-color: #1565c0;
+  transform: translateY(-1px);
+}
+
+.joy-button.outlined {
+  background-color: transparent;
+  border: 2px solid #1976d2;
+  color: #1976d2;
+}
+
+.joy-button.plain {
+  background-color: transparent;
+  color: #1976d2;
+  padding: 8px 16px;
+}
+
+.joy-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.joy-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.joy-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}</code></pre>
+
+    <h3>JavaScript</h3>
+    <pre><code class="language-javascript">const checkboxes = document.querySelectorAll('.joy-checkbox');
+    
+checkboxes.forEach(checkbox =&gt; {
+  checkbox.addEventListener('change', function() {
+    if (this.checked) {
+      this.style.transform = 'scale(0.9)';
+      setTimeout(() =&gt; {
+        this.style.transform = 'scale(1)';
+      }, 100);
+    }
+  });
+});</code></pre>
+
+    <h3>HTML Usage Examples</h3>
+    <pre><code class="language-html fill-me"></code></pre>
+  </div>
+
+  <script>
+    const fill = document.querySelector('.fill-me');
+    fill.textContent = `
+    <div class="button-group">
+        <button class="joy-button">Filled</button>
+        <button class="joy-button outlined">Outlined</button>
+        <button class="joy-button plain">Plain</button>
+      </div>
+      <input type="text" class="joy-input" placeholder="Regular input...">
+      <div class="input-with-button">
+        <input type="text" class="joy-input" placeholder="Type something...">
+        <button class="joy-button">Send</button>
+      </div>
+      <select class="joy-select">
+        <option value="" disabled="" selected="">Choose an option</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </select>
+      `;
+    // Add animation for checkboxes
+    const checkboxes = document.querySelectorAll('.joy-checkbox');
+    
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        if (this.checked) {
+          this.style.transform = 'scale(0.9)';
+          setTimeout(() => {
+            this.style.transform = 'scale(1)';
+          }, 100);
+        }
+      });
+    });
+
+    // Initialize highlight.js
+    hljs.highlightAll();
+  </script>
+
+</body></html>
