@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quadpad Export</title>
+
+<style>
+    @import url("https://rsms.me/inter/inter.css");
+html, body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    vertical-align: baseline;
+    background: #111;
+    color: white;
+    font-family: Inter;
+}
+#e {
+    position: absolute;
+    top: 40px;
+    left:20px;
+    resize: none;
+    border: 2px solid #fff2;
+    width: calc(100vw - 44px);
+    height: calc(100% - 64px);
+    border-radius: 10px;
+    background: #222;
+    color: white;
+    font-family: Inter;
+    outline: none;
+    padding: 5px;
+    box-sizing: border-box;
+}
+#ebox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 5px;
+    flex-direction: row;
+    top: 8px;
+    position: absolute;
+}
+</style>
+</head>
+<body>
+<div id="ebox">dEsktop app vEry soon</div>
+<textarea id="e" spellcheck="false"></textarea>
+<script type="text/javascript">
+    document.querySelector('#e').addEventListener('input', (e) => {
+    e.target.value = e.target.value.toLowerCase().replaceAll('e', "E");
+})
+</script>
+    
+</body>
+</html>
+                
